@@ -1,0 +1,1 @@
+System.register(["./index-legacy-4f532ec6.js"],(function(t,e){"use strict";var s;return{setters:[function(t){s=t.r}],execute:function(){t("D",{getUser:function(t,e){return s._post("/shop/data.user/lists",t,e)},getRegion:function(t,e){return s._post("/shop/data.region/lists",t,e)}})}}}));

@@ -1,0 +1,1 @@
+function e(e,t){return`${e.getFullYear()+"-"}${(e.getMonth()+1<10?"0"+(e.getMonth()+1):e.getMonth()+1)+"-"}${(e.getDate()<10?"0"+e.getDate():e.getDate())+" "}${(e.getHours()<10?"0"+e.getHours():e.getHours())+":"}${(e.getMinutes()<10?"0"+e.getMinutes():e.getMinutes())+":"}${e.getSeconds()<10?"0"+e.getSeconds():e.getSeconds()}`}export{e as f};
