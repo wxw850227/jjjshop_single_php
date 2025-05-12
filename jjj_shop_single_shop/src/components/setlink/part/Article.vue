@@ -1,16 +1,12 @@
 <template>
-  <!--
-        作者：luoyiming
-        时间：2020-06-08
-        描述：超链接选择-文章
-    -->
   <div class="article-box">
-
     <!--搜索表单-->
     <div class="common-seach-wrap">
       <el-form size="small" :inline="true" class="demo-form-inline">
         <el-form-item>
-          <el-button size="small" icon="Memo" @click="chooseList">选择文章列表</el-button>
+          <el-button size="small" icon="Memo" @click="chooseList"
+            >选择文章列表</el-button
+          >
         </el-form-item>
       </el-form>
     </div>
@@ -19,11 +15,20 @@
     <div class="article-content">
       <div class="table-wrap">
         <el-table size="small" :data="tableData" border style="width: 100%">
-          <el-table-column prop="article_title" label="文章标题"></el-table-column>
-          <el-table-column prop="category.name" label="文章分类" width="80"></el-table-column>
+          <el-table-column
+            prop="article_title"
+            label="文章标题"
+          ></el-table-column>
+          <el-table-column
+            prop="category.name"
+            label="文章分类"
+            width="80"
+          ></el-table-column>
           <el-table-column label="操作" width="80">
             <template #default="scope">
-              <el-button size="small" @click="changeFunc(scope.row)">选择</el-button>
+              <el-button size="small" @click="changeFunc(scope.row)"
+                >选择</el-button
+              >
             </template>
           </el-table-column>
         </el-table>
@@ -45,12 +50,12 @@
 </template>
 
 <script>
-import ArticleApi from '@/api/article.js';
+import ArticleApi from "@/api/article.js";
 export default {
   data() {
     return {
       /*tab切换选择中值*/
-      activeTab: 'second',
+      activeTab: "second",
       /*一页多少条*/
       pageSize: 5,
       /*一共多少条数据*/
@@ -62,11 +67,10 @@ export default {
       /*产品数据表*/
       tableData: [],
       /*选中的值*/
-      activePage: {}
+      activePage: {},
     };
   },
   created() {
-
     this.chooseList();
 
     /*获取列表*/
@@ -96,35 +100,34 @@ export default {
       Params.page = self.curPage;
       Params.list_rows = self.pageSize;
       ArticleApi.articlelist(Params, true)
-        .then(data => {
+        .then((data) => {
           self.loading = false;
           self.tableData = data.data.list.data;
           self.totalDataNumber = data.data.list.total;
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
         });
     },
 
     /*选中的值*/
     changeFunc(e) {
-      let obj={};
+      let obj = {};
       obj.name = e.article_title;
-      obj.url = 'pages/article/detail/detail?article_id=' + e.article_id;
-      obj.type = '文章';
-      this.$emit('changeData',obj);
+      obj.url = "pages/article/detail/detail?article_id=" + e.article_id;
+      obj.type = "文章";
+      this.$emit("changeData", obj);
     },
 
     /*选择列表*/
-    chooseList(){
-      let obj={};
-      obj.name = '文章列表';
-      obj.url = 'pages/article/list/list';
-      obj.type = '文章';
-      this.$emit('changeData',obj);
-    }
-
-  }
+    chooseList() {
+      let obj = {};
+      obj.name = "文章列表";
+      obj.url = "pages/article/list/list";
+      obj.type = "文章";
+      this.$emit("changeData", obj);
+    },
+  },
 };
 </script>
 
